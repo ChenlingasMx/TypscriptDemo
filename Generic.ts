@@ -48,3 +48,15 @@ const newGirls = new SelectGirl([
   { name: "晓红" },
 ])
 newGirls.getGirl(1)
+
+/*
+  类的约束型泛型
+*/
+class  SelectBoys<T extends number|string> {
+  constructor(private boys:T[]){}
+  getBoys(index: number):T{
+    return this.boys[index]
+  }
+}
+const newBoys = new SelectBoys<string>(['11','22','33'])
+newBoys.getBoys(1)
