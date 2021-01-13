@@ -30,7 +30,9 @@ function moreFun<T,P>(first:T,second:P){
 } 
 moreFun<string,number>('1',1)
 
-/*类的泛型*/
+/*
+类的泛型
+*/
 interface Girl {
   name:string
 }
