@@ -1,4 +1,4 @@
-# TypeScript入门
+# TypeScript基础语法
 
 ## install
 ```bash
