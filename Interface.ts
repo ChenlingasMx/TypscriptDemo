@@ -21,3 +21,9 @@ const getPerson = (girl: Girl) => {
 let girl = { name: "大脚", age: 18, bust: 94,sex:'女',say(){return '我是小姐姐'} }
 screenResume(girl);
 getPerson(girl);
+
+
+const handleView = (value:string|number):string|number=>{
+  return value
+}
+handleView('你好我是一个大帅哥')
