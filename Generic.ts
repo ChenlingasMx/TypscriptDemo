@@ -49,10 +49,12 @@ const newGirls = new SelectGirl([
 ])
 newGirls.getGirl(1)
 
-/*
-  类的约束型泛型
-*/
-class SelectBoys<T extends number | string> {
+
+/* 类的约束型泛型 */
+interface Lengthwise {
+  length: number;
+}
+class SelectBoys<T extends Lengthwise | string> {
   constructor(private boys: T[]) { }
   getBoys(index: number): T {
     return this.boys[index]
@@ -78,4 +80,4 @@ interface GenericIdentityFn<T> {
 function secondIndentity<T>(arg: T): T {
   return arg
 }
-let myThirdIndentity : GenericIdentityFn<number> = secondIndentity
+let myThirdIndentity: GenericIdentityFn<number> = secondIndentity
