@@ -25,20 +25,20 @@ myFun<string>(["123", "456"]);
 /*
   多个泛型
 */
-function moreFun<T,P>(first:T,second:P){
+function moreFun<T, P>(first: T, second: P) {
   console.log(`${first}${second}`)
-} 
-moreFun<string,number>('1',1)
+}
+moreFun<string, number>('1', 1)
 
 /*
 类的泛型
 */
 interface Girl {
-  name:string
+  name: string
 }
 class SelectGirl<T extends Girl>{
-  constructor(private girls:T[]){}
-  getGirl(index:number){
+  constructor(private girls: T[]) { }
+  getGirl(index: number) {
     console.log(this.girls[index].name)
   }
 }
@@ -52,11 +52,30 @@ newGirls.getGirl(1)
 /*
   类的约束型泛型
 */
-class  SelectBoys<T extends number|string> {
-  constructor(private boys:T[]){}
-  getBoys(index: number):T{
+class SelectBoys<T extends number | string> {
+  constructor(private boys: T[]) { }
+  getBoys(index: number): T {
     return this.boys[index]
   }
 }
-const newBoys = new SelectBoys<string>(['11','22','33'])
+const newBoys = new SelectBoys<string>(['11', '22', '33'])
 newBoys.getBoys(1)
+
+
+/* 泛型函数 */
+function indentity<T>(arg: T): T {
+  return arg
+}
+// 1.常规形式
+let myFirstIndentity: <T>(arg: T) => T = indentity
+// 2.标签形式
+let mySecondIndentity: { <T>(arg: T): T } = indentity;
+
+/* 泛型函数作为接口使用 */
+interface GenericIdentityFn<T> {
+  (arg: T): T
+}
+function secondIndentity<T>(arg: T): T {
+  return arg
+}
+let myThirdIndentity : GenericIdentityFn<number> = secondIndentity
