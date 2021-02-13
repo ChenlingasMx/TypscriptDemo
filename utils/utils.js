@@ -105,35 +105,51 @@ export function getSexForCard(str) {
 // 实现promise
 export function promiseAll(promises) {
   return new Promise(function (resolve, reject) {
-      if (!isArray(promises)) {
-          return reject(new TypeError('arguments must be an array'));
-      }
-      var resolvedCounter = 0;
-      var promiseNum = promises.length;
-      var resolvedValues = new Array(promiseNum);
-      for (var i = 0; i < promiseNum; i++) {
-          (function (i) {
-              Promise.resolve(promises[i]).then(function (value) {
-                  resolvedCounter++
-                  resolvedValues[i] = value
-                  if (resolvedCounter == promiseNum) {
-                      return resolve(resolvedValues)
-                  }
-              }, function (reason) {
-                  return reject(reason)
-              })
-          })(i)
-      }
+    if (!isArray(promises)) {
+      return reject(new TypeError('arguments must be an array'));
+    }
+    var resolvedCounter = 0;
+    var promiseNum = promises.length;
+    var resolvedValues = new Array(promiseNum);
+    for (var i = 0; i < promiseNum; i++) {
+      (function (i) {
+        Promise.resolve(promises[i]).then(function (value) {
+          resolvedCounter++
+          resolvedValues[i] = value
+          if (resolvedCounter == promiseNum) {
+            return resolve(resolvedValues)
+          }
+        }, function (reason) {
+          return reject(reason)
+        })
+      })(i)
+    }
   })
 }
 
-// 数组去重
-function unique(arr){
-  var newArr = [];
-  for(var i = 0; i < arr.length; i++){
-      if(newArr.indexOf(arr[i]) == -1){
-          newArr.push(arr[i])
+// 数组去重-针对数组元素类型不定情况下,通常是数组内包裹对象(利用对象的key唯一特效);
+function unique(arr) {
+  let obj = {};
+  arr.forEach((item) => obj[item.name] = item);
+  let a = [];
+  for (let key in obj) { a.push(obj[key]) };
+  return a 
+}
+
+// 利用splice直接在原数组进行操作
+Array.prototype.distinct = function () {
+  var arr = this,
+    i,
+    j,
+    len = arr.length;
+  for (i = 0; i < len; i++) {
+    for (j = i + 1; j < len; j++) {
+      if (arr[i] == arr[j]) {
+        arr.splice(j, 1);
+        len--;
+        j--;
       }
+    }
   }
-  return newArr;
-} 
+  return arr;
+};
