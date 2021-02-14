@@ -133,7 +133,7 @@ function unique(arr) {
   arr.forEach((item) => obj[item.name] = item);
   let a = [];
   for (let key in obj) { a.push(obj[key]) };
-  return a 
+  return a
 }
 
 // 利用splice直接在原数组进行操作
@@ -153,3 +153,15 @@ Array.prototype.distinct = function () {
   }
   return arr;
 };
+
+// 简易递归函数
+function shownumber() {
+  var n = 0;
+  n += 1;
+  if (n === 10000) {
+    console.log(n);
+    return;
+  }
+  shownumber();
+}
+shownumber();
