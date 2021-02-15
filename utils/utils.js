@@ -165,3 +165,12 @@ function shownumber() {
   shownumber();
 }
 shownumber();
+
+// 简单深拷贝
+function simpleCopy(obj1) {
+  var obj2 = Array.isArray(obj1) ? [] : {};
+  for (let i in obj1) {
+  obj2[i] = obj1[i];
+ }
+  return obj2;
+}
