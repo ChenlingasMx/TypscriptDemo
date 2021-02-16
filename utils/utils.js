@@ -174,3 +174,10 @@ function simpleCopy(obj1) {
  }
   return obj2;
 }
+// 闭包
+function fn() {
+  var a = 12;
+  return function() {
+      return a;
+  }
+}
