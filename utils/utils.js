@@ -164,7 +164,16 @@ function shownumber() {
   }
   shownumber();
 }
-shownumber();
+
+// 简单潜拷贝
+function fn(){
+  let obj2 = {}
+  for(let key in obj){
+      obj2[key] = obj[key]
+  }
+  obj2.name = 'CCC'
+  return obj2
+}
 
 // 简单深拷贝
 function simpleCopy(obj1) {
