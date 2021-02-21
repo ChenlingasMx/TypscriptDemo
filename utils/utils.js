@@ -136,7 +136,7 @@ function unique(arr) {
   return a
 }
 
-// 利用splice直接在原数组进行操作
+// 数组去重-利用splice直接在原数组进行操作
 Array.prototype.distinct = function () {
   var arr = this,
     i,
@@ -153,6 +153,22 @@ Array.prototype.distinct = function () {
   }
   return arr;
 };
+// 数组去重-利用indexOf
+function unique(arr) {
+  if (!Array.isArray(arr)) {
+  console.log('type error!')
+  return
+  }
+  var array = [];
+  for (var i = 0; i < arr.length; i++) {
+  if (array .indexOf(arr[i]) === -1) {
+  array .push(arr[i])
+  }
+  }
+  return array;
+ }
+ // 数组去重-loadsh import uniqBy from 'lodash/uniqBy';
+ uniqBy([],key)
 
 // 简易递归函数
 function shownumber() {
