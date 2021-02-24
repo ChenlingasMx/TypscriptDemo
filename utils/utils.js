@@ -206,5 +206,15 @@ function fn() {
       return a;
   }
 }
-
+// 查看密钥
 // ls ~/.ssh
+
+// 16.4之前
+// constructor → componentWillMount → render → componentDidMount
+// props更新 componentWillReceiveProps → shouldComponentUpdate(如果返回true) → componentWillUpdate → render → componentDidUpdate
+// state更新 shouldComponentUpdate (如果返回true)→ componentWillUpdate → render → componentDidUpdate
+// 组件卸载 componentWillUnmount
+
+// 16.4之后
+// constructor => getDerivedStateFromProps => shouldComponentUpdate => render => getSnapshotBeforeUpdate => componentDidMount => componentWillUnmount
+
