@@ -218,3 +218,5 @@ function fn() {
 // 16.4之后
 // constructor => getDerivedStateFromProps => shouldComponentUpdate => render => getSnapshotBeforeUpdate => componentDidMount => componentWillUnmount
 
+// asyncStroage
+
