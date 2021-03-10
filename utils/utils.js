@@ -156,19 +156,19 @@ Array.prototype.distinct = function () {
 // 数组去重-利用indexOf
 function unique(arr) {
   if (!Array.isArray(arr)) {
-  console.log('type error!')
-  return
+    console.log('type error!')
+    return
   }
   var array = [];
   for (var i = 0; i < arr.length; i++) {
-  if (array .indexOf(arr[i]) === -1) {
-  array .push(arr[i])
-  }
+    if (array.indexOf(arr[i]) === -1) {
+      array.push(arr[i])
+    }
   }
   return array;
- }
- // 数组去重-loadsh import uniqBy from 'lodash/uniqBy';
- uniqBy([],key)
+}
+// 数组去重-loadsh import uniqBy from 'lodash/uniqBy';
+uniqBy([], key)
 
 // 简易递归函数
 function shownumber() {
@@ -181,29 +181,50 @@ function shownumber() {
   shownumber();
 }
 
+// 浅拷贝只能用于对象中只包含基本类型的数据，修改其中一个的属性后，相互不影响，当对象中仍然包含对象类型的数据时，则是引用关系，修改会相互影响，所以这种情况需要用到深拷贝
 // 简单潜拷贝
-function fn(){
+function fn() {
   let obj2 = {}
-  for(let key in obj){
-      obj2[key] = obj[key]
+  for (let key in obj) {
+    obj2[key] = obj[key]
   }
   obj2.name = 'CCC'
   return obj2
 }
 
 // 简单深拷贝
-function simpleCopy(obj1) {
-  var obj2 = Array.isArray(obj1) ? [] : {};
-  for (let i in obj1) {
-  obj2[i] = obj1[i];
- }
-  return obj2;
+function deepClone(obj) {
+  let objClone = Array.isArray(obj) ? [] : {};
+  if (obj && typeof obj === 'object') {
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (obj[key] && typeof obj[key] === 'object') {
+          objClone[key] = deepClone(obj[key]); // --------- 递归调用，deepClone()函数的返回值是objClone
+        } else {
+          objClone[key] = obj[key];
+        }
+      }
+    }
+  }
+  return objClone;
 }
+const params = {
+  name: 'wang',
+  address: {
+    city: ['china', 'choing'],
+    district: {
+      town: 'jiazhou'
+    }
+  }
+};
+const b = deepClone(params);
+
+
 // 闭包
 function fn() {
   var a = 12;
-  return function() {
-      return a;
+  return function () {
+    return a;
   }
 }
 // 查看密钥
