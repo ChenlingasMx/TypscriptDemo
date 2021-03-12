@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 const ReactContext = React.createContext()
 const Father = () => {
@@ -10,10 +10,11 @@ const Father = () => {
   )
 }
 
-const Son = () =>{
+const Son = () => {
+  const query = useContext(ReactContext)
   return (
     <ReactContext.Consumer>
-      {val=><div>{val&&val}</div>}
+      {val => <div>{val && val}</div>}
     </ReactContext.Consumer>
   )
 }
