@@ -229,6 +229,7 @@ function fn() {
 }
 // 查看密钥
 // ls ~/.ssh
+// cd /.ssh
 
 // 16.4之前
 // constructor → componentWillMount → render → componentDidMount
